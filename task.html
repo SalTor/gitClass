@@ -1,0 +1,85 @@
+	<!DOCTYPE html> 
+	<html> 
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Creative Lab</title>
+		<meta name="viewport" content="width=device-width">
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http//ajax.googleapis.com/ajax/libs/jquery ui/1.8.23/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http:/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#date" ).datepicker();
+  });
+  </script>
+
+		
+	</head>
+	<body>
+			<p id="abc" style="color:red"></p>
+			<table id="table" cellspacing="10px" cellpadding="3">
+			<tr>		
+			<th width="150px" bgcolor="grey">Task</th>
+			<th width="150px" bgcolor="grey">Description</th>
+			<th width="150px" bgcolor="grey">Date</th>
+			</tr>
+			<tr>
+			<td>
+				<input id="task" type="text" placeholder="task"></input></td>
+				<td><input type="text" id="desc" placeholder="description"></input></td>
+				<td><input type="text" id="date" placeholder="date"></input></td>
+				<td><button id="submit">Submit</button>
+				</td>
+				</tr>
+				<tr><td><button id="clear">Clear All Tasks</button></td></tr>
+			</table>
+			
+	</body>
+<script type="text/javascript">
+	var table = document.getElementById('table');
+	var task = document.getElementById('task');
+	var desc = document.getElementById('desc');
+	var date = document.getElementById('date');
+	var abc;
+		
+	$("#submit").click(function(){
+
+		if(task.value.length == 0){
+			abc = "*Please Enter a new Task";
+			document.getElementById("abc").innerHTML = abc;
+		} else
+		{
+		var row = table.insertRow(1);
+		var t1 = row.insertCell(0);
+		var d1 = row.insertCell(1);
+		var dt1 = row.insertCell(2);
+
+		var remove = row.insertCell(3);
+
+				
+		t1.innerHTML = task.value;
+		d1.innerHTML = desc.value;
+		dt1.innerHTML = date.value;   
+		remove.innerHTML = "<input type = 'button' id='but' value = 'Remove Task'>"; 
+		$('#but').click(function(){$(this).closest("tr").remove();});
+		
+		task.value = "";
+		desc.value = "";
+		date.value = "";
+	}
+	});
+
+
+	$('#clear').click(function(){
+		location.reload();
+	})
+
+
+	
+</script>
+	</html>
